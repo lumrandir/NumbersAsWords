@@ -9,3 +9,6 @@ module Helper =
 
     let getIntegralPart (number : int) (divider : int) =
         number - (getFractionalPart number divider)
+
+    let valueToTriplet (value : int) =
+        (String.replicate (3 - string(value).Length) "0") + string(value)

@@ -16,9 +16,9 @@ module Translator =
         match degree with
             | 1 -> getWordsFor value
             | 2 -> getWordsFor value + " тысяч" + 
-                   (terminationForThousands (string(value).[1]) (string(value).[2]))
+                   (terminationForThousands (valueToTriplet(value).[1]) (valueToTriplet(value).[2]))
             | 3 -> getWordsFor value + " миллион" + 
-                   (terminationForMillions (string(value).[1]) (string(value).[2]))
+                   (terminationForMillions (valueToTriplet(value).[1]) (valueToTriplet(value).[2]))
             | _ -> ""
 
     let rec convertToWordsByDegree (degree : int) (num : int) (result : string) =
