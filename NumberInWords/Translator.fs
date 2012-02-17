@@ -8,9 +8,9 @@ module Translator =
     let getWordsFor (value : int) =
         match value with
             | 0 -> ""
-            | _ -> hundreds (string(value).[0]) + " " + 
-                   tens (string(value).[1]) (string(value).[2]) + " " +
-                   units (string(value).[2]) (string(value).[1])
+            | _ -> hundreds (valueToTriplet(value).[0]) + " " + 
+                   tens (valueToTriplet(value).[1]) (valueToTriplet(value).[2]) + " " +
+                   units (valueToTriplet(value).[2]) (valueToTriplet(value).[1])
 
     let convertDegreeToWords  (degree : int) (value : int) = 
         match degree with

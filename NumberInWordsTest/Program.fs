@@ -5,6 +5,6 @@ module Test =
 
     [<EntryPoint>]
     let main (args : string[]) =
-        printfn "%A" (fromNumber 1150569874)
+        printfn "%A" (fromNumber 1215)
         System.Console.ReadKey() |> ignore
         0
