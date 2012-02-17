@@ -3,32 +3,22 @@
 namespace NumberInWords
 module Translator = 
     open Helper
-    
-    let hundreds (c : char) =
-        match c with
-            | '1' -> "сто"
-            | '2' -> "двести"
-            | '3' -> "триста"
-            | '4' -> "четыреста"
-            | '5' -> "пятьсот"
-            | '6' -> "шестьсот"
-            | '7' -> "семьсот"
-            | '8' -> "восемьсот"
-            | '9' -> "девятьсот"
-            | _   -> ""
+    open Dictionary
 
-    let getWordsForHundreds (value : int) =
+    let getWordsFor (value : int) =
         match value with
             | 0 -> ""
-            | _ -> hundreds
-
-        
+            | _ -> hundreds (string(value).[0]) + " " + 
+                   tens (string(value).[1]) (string(value).[2]) + " " +
+                   units (string(value).[2]) (string(value).[1])
 
     let convertDegreeToWords  (degree : int) (value : int) = 
         match degree with
-            | 1 -> getWordsForHundreds value
-            | 2 -> "тысяча"
-            | 3 -> "миллион"
+            | 1 -> getWordsFor value
+            | 2 -> getWordsFor value + " тысяч" + 
+                   (terminationForThousands (string(value).[1]) (string(value).[2]))
+            | 3 -> getWordsFor value + " миллион" + 
+                   (terminationForMillions (string(value).[1]) (string(value).[2]))
             | _ -> ""
 
     let rec convertToWordsByDegree (degree : int) (num : int) (result : string) =

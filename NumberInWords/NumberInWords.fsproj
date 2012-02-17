@@ -27,9 +27,12 @@
     <Optimize>true</Optimize>
     <Tailcalls>true</Tailcalls>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <WarningLevel>3</WarningLevel>
+    <DefineConstants>
+    </DefineConstants>
+    <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\NumberInWords.XML</DocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningsAsErrors />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
@@ -40,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helper.fs" />
+    <Compile Include="Dictionary.fs" />
     <Compile Include="Translator.fs" />
     <None Include="Script.fsx" />
   </ItemGroup>
