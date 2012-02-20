@@ -41,7 +41,7 @@ module Dictionary =
             | '9' -> "девяносто"
             |  _  -> ""
 
-    let units (c : char) (t : char) =
+    let unitsM (c: char) (t : char) = 
         match (c, t) with
             | (_, '1') -> ""
             | ('1', _) -> "один"
@@ -54,6 +54,25 @@ module Dictionary =
             | ('8', _) -> "восемь"
             | ('9', _) -> "девять"
             |  _       -> ""
+
+    let unitsF (c: char) (t : char) = 
+        match (c, t) with
+            | (_, '1') -> ""
+            | ('1', _) -> "одна"
+            | ('2', _) -> "две"
+            | ('3', _) -> "три"
+            | ('4', _) -> "четыре"
+            | ('5', _) -> "пять"
+            | ('6', _) -> "шесть"
+            | ('7', _) -> "семь"
+            | ('8', _) -> "восемь"
+            | ('9', _) -> "девять"
+            |  _       -> ""
+
+    let units (c : char) (t : char) (gender : char) =
+        match gender with
+            | 'f' -> unitsF c t
+            |  _  -> unitsM c t
 
     let terminationForThousands (t : char) (u : char) =
         match (t, u) with

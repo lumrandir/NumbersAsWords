@@ -5,19 +5,19 @@ module Translator =
     open Helper
     open Dictionary
 
-    let getWordsFor (value : int) =
+    let getWordsFor (value : int) (gender : char) =
         match value with
             | 0 -> ""
             | _ -> hundreds (valueToTriplet(value).[0]) + " " + 
                    tens (valueToTriplet(value).[1]) (valueToTriplet(value).[2]) + " " +
-                   units (valueToTriplet(value).[2]) (valueToTriplet(value).[1])
+                   units (valueToTriplet(value).[2]) (valueToTriplet(value).[1]) gender
 
     let convertDegreeToWords  (degree : int) (value : int) = 
         match degree with
-            | 1 -> getWordsFor value
-            | 2 -> getWordsFor value + " тысяч" + 
+            | 1 -> getWordsFor value 'm'
+            | 2 -> getWordsFor value 'f' + " тысяч" + 
                    (terminationForThousands (valueToTriplet(value).[1]) (valueToTriplet(value).[2]))
-            | 3 -> getWordsFor value + " миллион" + 
+            | 3 -> getWordsFor value 'm' + " миллион" + 
                    (terminationForMillions (valueToTriplet(value).[1]) (valueToTriplet(value).[2]))
             | _ -> ""
 
